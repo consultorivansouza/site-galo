@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Galo Forte 🏆 | Atlético Mineiro - Clube, Títulos, Jogadores e Opinião</title>
+    <!-- Google Fonts + Font Awesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(145deg, #f9f5f0 0%, #ece6df 100%);
+            color: #1e1a17;
+            scroll-behavior: smooth;
+        }
+
+        /* Cores do Galo: preto, branco e dourado + detalhes em preto/amarelo */
+        :root {
+            --galo-black: #0a0a0a;
+            --galo-gold: #ffb800;
+            --galo-white: #ffffff;
+            --galo-darkgray: #2c2c2c;
+            --galo-lightgray: #f0ebe5;
+            --shadow-sm: 0 8px 20px rgba(0,0,0,0.05);
+            --shadow-md: 0 12px 28px rgba(0,0,0,0.1);
+        }
+
+        /* Header / NAV */
+        header {
+            background: var(--galo-black);
+            color: white;
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        .nav-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 800;
+            font-size: 1.6rem;
+            letter-spacing: -0.5px;
+        }
+
+        .logo i {
+            font-size: 2.2rem;
+            color: var(--galo-gold);
+        }
+
+        .logo span {
+            background: linear-gradient(135deg, #fff 30%, #ffcd4a 90%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #f0f0f0;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.2s;
+            font-size: 1rem;
+            padding: 0.5rem 0;
+            border-bottom: 2px solid transparent;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--galo-gold);
+            border-bottom-color: var(--galo-gold);
+        }
+
+        /* container principal */
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 2rem 2rem 4rem;
+        }
+
+        section {
+            display: none;
+            animation: fadeIn 0.4s ease-out;
+        }
+
+        section.active-section {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(12px);}
+            to { opacity: 1; transform: translateY(0);}
+        }
+
+        /* cards e elementos visuais */
+        .hero {
+            background: linear-gradient(115deg, #0a0a0a 40%, #1f1b18 90%);
+            border-radius: 2rem;
+            padding: 3rem 2rem;
+            color: white;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            box-shadow: var(--shadow-md);
+        }
+
+        .hero-text h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            line-height: 1.2;
+        }
+
+        .hero-text h1 i {
+            color: var(--galo-gold);
+            margin-right: 8px;
+        }
+
+        .hero-text p {
+            font-size: 1.2rem;
+            margin-top: 1rem;
+            opacity: 0.9;
+            max-width: 500px;
+        }
+
+        .hero-badge {
+            background: var(--galo-gold);
+            color: #0a0a0a;
+            padding: 0.6rem 1.4rem;
+            border-radius: 60px;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 1.5rem;
+        }
+
+        .hero-img {
+            font-size: 6rem;
+            filter: drop-shadow(0 8px 12px rgba(0,0,0,0.4));
+        }
+
+        /* grid de cards */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .info-card {
+            background: white;
+            border-radius: 1.5rem;
+            padding: 1.8rem;
+            transition: 0.2s;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .info-card i {
+            font-size: 2.5rem;
+            color: var(--galo-gold);
+            margin-bottom: 1rem;
+        }
+
+        .info-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.8rem;
+        }
+
+        /* títulos lista */
+        .titles-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .title-item {
+            background: white;
+            border-radius: 1rem;
+            padding: 1rem 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+            font-weight: 600;
+            box-shadow: var(--shadow-sm);
+            transition: 0.1s linear;
+            border-left: 6px solid var(--galo-gold);
+        }
+        .title-year {
+            background: var(--galo-black);
+            color: var(--galo-gold);
+            padding: 0.2rem 1rem;
+            border-radius: 60px;
+            font-weight: 800;
+            font-size: 0.9rem;
+        }
+        .title-name {
+            font-size: 1.2rem;
+        }
+
+        /* Jogadores grid */
+        .players-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        .player-card {
+            background: white;
+            border-radius: 1.5rem;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.2s;
+            text-align: center;
+            padding: 1.5rem 1rem;
+        }
+        .player-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-md);
+        }
+        .player-avatar {
+            background: #e9e2d9;
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3.8rem;
+            color: var(--galo-black);
+            border: 3px solid var(--galo-gold);
+        }
+        .player-name {
+            font-size: 1.5rem;
+            font-weight: 800;
+        }
+        .player-role {
+            color: #b35f00;
+            font-weight: 600;
+            margin: 0.3rem 0;
+        }
+        .player-bio {
+            font-size: 0.9rem;
+            padding: 0 0.8rem;
+            color: #3b3b3b;
+        }
+
+        /* seção opinião */
+        .opinion-container {
+            background: white;
+            border-radius: 2rem;
+            padding: 2rem;
+            box-shadow: var(--shadow-sm);
+            margin-top: 1.5rem;
+        }
+        .opinion-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            margin-top: 1rem;
+        }
+        .opinion-form input, .opinion-form textarea {
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 1rem;
+            font-family: inherit;
+            resize: vertical;
+            font-size: 1rem;
+        }
+        .opinion-form button {
+            background: var(--galo-black);
+            color: white;
+            border: none;
+            padding: 0.9rem;
+            font-weight: bold;
+            border-radius: 2rem;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .opinion-form button:hover {
+            background: #2c2c2c;
+            color: var(--galo-gold);
+        }
+        .opinions-list {
+            margin-top: 2rem;
+            border-top: 2px dashed #e0d6ce;
+            padding-top: 1.5rem;
+        }
+        .single-opinion {
+            background: #fef9f2;
+            padding: 1rem;
+            border-radius: 1rem;
+            margin-bottom: 1rem;
+            border-left: 4px solid var(--galo-gold);
+        }
+        .opinion-author {
+            font-weight: 800;
+            color: #0a0a0a;
+        }
+        .opinion-date {
+            font-size: 0.7rem;
+            color: gray;
+        }
+        .opinion-text {
+            margin-top: 0.5rem;
+        }
+
+        footer {
+            background: #0a0a0a;
+            color: #aaa;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 2rem;
+            font-size: 0.85rem;
+        }
+        @media (max-width: 780px) {
+            .nav-container {
+                flex-direction: column;
+            }
+            .hero-text h1 {
+                font-size: 2rem;
+            }
+            .hero-img {
+                font-size: 4rem;
+            }
+        }
+        button, .nav-links a {
+            cursor: pointer;
+        }
+        .active-nav {
+            color: var(--galo-gold) !important;
+            border-bottom-color: var(--galo-gold) !important;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="nav-container">
+        <div class="logo">
+            <i class="fas fa-crow"></i>
+            <span>Galo <span style="color:#ffb800;">★</span> Mineiro</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#" data-section="home" class="nav-link active-nav">🏠 HOME</a></li>
+            <li><a href="#" data-section="about" class="nav-link">📖 ABOUT</a></li>
+            <li><a href="#" data-section="titles" class="nav-link">🏆 TÍTULOS</a></li>
+            <li><a href="#" data-section="players" class="nav-link">⚽ JOGADORES</a></li>
+            <li><a href="#" data-section="opinion" class="nav-link">💬 OPINIÃO</a></li>
+        </ul>
+    </div>
+</header>
+
+<main class="container">
+    <!-- HOME Section -->
+    <section id="home" class="active-section">
+        <div class="hero">
+            <div class="hero-text">
+                <h1><i class="fas fa-futbol"></i> Clube Atlético Mineiro</h1>
+                <p>O Galo Forte, tradição, raça e paixão. Um dos maiores clubes do Brasil, dono de uma torcida que nunca para de cantar. 🐓💪</p>
+                <div class="hero-badge"><i class="fas fa-trophy"></i> 9x Campeão Mineiro na última década · 2021: TRIO DE OURO</div>
+            </div>
+            <div class="hero-img">
+                <i class="fas fa-drumstick-bite"></i> 🏆⚽
+            </div>
+        </div>
+        <div class="cards-grid">
+            <div class="info-card">
+                <i class="fas fa-map-marker-alt"></i>
+                <h3>BH · Arena MRV</h3>
+                <p>Nova casa do Galo, estádio moderno com capacidade para 46 mil torcedores. Inaugurado em 2023.</p>
+            </div>
+            <div class="info-card">
+                <i class="fas fa-chart-line"></i>
+                <h3>Maior do Estado</h3>
+                <p>49 títulos estaduais, 2 Copas Libertadores, 3 Campeonatos Brasileiros e várias glórias internacionais.</p>
+            </div>
+            <div class="info-card">
+                <i class="fas fa-heart"></i>
+                <h3>Torcida Imponente</h3>
+                <p>Uma das maiores do Brasil, conhecida por apoiar sem parar. "Galo Doido" é referência em festa nas arquibancadas.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT Section -->
+    <section id="about">
+        <h2 style="font-size: 2rem; border-left: 6px solid var(--galo-gold); padding-left: 1rem;">📌 História & Identidade</h2>
+        <div style="background: white; border-radius: 1.5rem; padding: 2rem; margin-top: 1.5rem; box-shadow: var(--shadow-sm);">
+            <p style="font-size: 1.1rem; line-height: 1.5;"><strong>Fundação:</strong> 25 de março de 1908, por estudantes na capital mineira. <br><br>
+            O Atlético Mineiro é conhecido pelo apelido "Galo" devido ao símbolo do clube, que representa garra e combatividade. Suas cores: preto e branco, complementadas pelo dourado dos títulos. <br><br>
+            Grandes ídolos: Reinaldo, Dadá Maravilha, Éder, João Leite, Victor, Ronaldinho Gaúcho, Hulk, entre tantos. A década de 2020 foi mágica com a conquista da Tríplice Coroa em 2021 (Campeonato Mineiro, Brasileirão e Copa do Brasil), repetindo feito histórico. Em 2013, o clube conquistou a América pela primeira vez, vencendo a Libertadores. <br><br>
+            O CT da Cidade do Galo é referência na formação de atletas, e a torcida organizada Galoucura e Movimento Porco são símbolos de paixão.</p>
+            <div style="margin-top: 1.5rem; background: #eae2d9; border-radius: 1rem; padding: 1rem; text-align: center;">
+                <i class="fas fa-shield-alt" style="color:#ffb800;"></i> "Galo Forte, Vingador!"
+            </div>
+        </div>
+    </section>
+
+    <!-- TÍTULOS Section -->
+    <section id="titles">
+        <h2 style="font-size: 2rem; border-left: 6px solid var(--galo-gold); padding-left: 1rem;">🏆 GALERIA DE TÍTULOS</h2>
+        <div class="titles-list">
+            <div class="title-item"><span class="title-year">2021</span><span class="title-name">🏅 Campeonato Brasileiro Série A</span><i class="fas fa-star" style="margin-left:auto; color:gold"></i></div>
+            <div class="title-item"><span class="title-year">2021</span><span class="title-name">🏆 Copa do Brasil</span><i class="fas fa-trophy" style="margin-left:auto; color:#cd7f32"></i></div>
+            <div class="title-item"><span class="title-year">2013</span><span class="title-name">🌎 CONMEBOL Libertadores</span><i class="fas fa-globe-americas" style="margin-left:auto;"></i></div>
+            <div class="title-item"><span class="title-year">2014</span><span class="title-name">🏆 Recopa Sudamericana</span></div>
+            <div class="title-item"><span class="title-year">1971</span><span class="title-name">⚽ Campeonato Brasileiro</span></div>
+            <div class="title-item"><span class="title-year">1937</span><span class="title-name">🏅 Torneio dos Campeões (primeiro título nacional)</span></div>
+            <div class="title-item"><span class="title-year">49x</span><span class="title-name">🏆 Campeonato Mineiro (recorde absoluto)</span></div>
+            <div class="title-item"><span class="title-year">1992</span><span class="title-name">🇧🇷 Copa CONMEBOL (atual Sul-Americana)</span></div>
+        </div>
+        <p style="margin-top: 1.5rem; font-style: italic; text-align: center;">Além de dezenas de títulos regionais e interestaduais. O Galo é gigante! 🐓💛</p>
+    </section>
+
+    <!-- JOGADORES Section -->
+    <section id="players">
+        <h2 style="font-size: 2rem; border-left: 6px solid var(--galo-gold); padding-left: 1rem;">⚡ ÍDOLOS & ELENCO HISTÓRICO</h2>
+        <div class="players-grid">
+            <div class="player-card">
+                <div class="player-avatar"><i class="fas fa-user-astronaut"></i></div>
+                <div class="player-name">Hulk</div>
+                <div class="player-role">Atacante / Camisa 7</div>
+                <div class="player-bio">Artilheiro, força bruta e ídolo da conquista de 2021. Mais de 100 gols pelo Galo e referência.</div>
+            </div>
+            <div class="player-card">
+                <div class="player-avatar"><i class="fas fa-user-ninja"></i></div>
+                <div class="player-name">Ronaldinho Gaúcho</div>
+                <div class="player-role">Mago / 2012-2014</div>
+                <div class="player-bio">Conduziu o Galo ao título da Libertadores 2013. Mágico e decisivo na história alvinegra.</div>
+            </div>
+            <div class="player-card">
+                <div class="player-avatar"><i class="fas fa-user-tie"></i></div>
+                <div class="player-name">Victor</div>
+                <div class="player-role">Goleiro lendário</div>
+                <div class="player-bio">Maior ídolo da posição, defensor implacável, capitão na conquista da Libertadores e Copa do Brasil.</div>
+            </div>
+            <div class="player-card">
+                <div class="player-avatar"><i class="fas fa-user-graduate"></i></div>
+                <div class="player-name">Reinaldo</div>
+                <div class="player-role">Artilheiro máximo</div>
+                <div class="player-bio">Maior artilheiro da história do clube, centroavante lendário dos anos 70/80. Ídolo eterno.</div>
+            </div>
+            <div class="player-card">
+                <div class="player-avatar"><i class="fas fa-user-cowboy"></i></div>
+                <div class="player-name">João Leite</div>
+                <div class="player-role">Goleiro e referência</div>
+                <div class="player-bio">Símbolo de raça, jogou mais de 600 partidas. Um dos maiores nomes da história do Galo.</div>
+            </div>
+            <div class="player-card">
+                <div class="player-avatar"><i class="fas fa-futbol"></i></div>
+                <div class="player-name">Zaracho</div>
+                <div class="player-role">Meia argentino</div>
+                <div class="player-bio">Peça fundamental nos últimos títulos, criatividade e gols importantes.</div>
+            </div>
+        </div>
+        <div style="background: #ffe9cf; border-radius: 1rem; padding: 1rem; text-align: center; margin-top: 1rem;">
+            <i class="fas fa-users"></i> E muitos outros: Dadá Maravilha, Éder Aleixo, Guilherme, Diego Tardelli, Júnior Alonso, etc.
+        </div>
+    </section>
+
+    <!-- OPINIÃO Section -->
+    <section id="opinion">
+        <h2 style="font-size: 2rem; border-left: 6px solid var(--galo-gold); padding-left: 1rem;">💬 Deixe sua opinião sobre o Galo</h2>
+        <div class="opinion-container">
+            <p>Compartilhe sua visão, crítica, elogio ou meme sobre o Atlético Mineiro. A sua opinião faz parte da galeria do Galo Doido!</p>
+            <div class="opinion-form">
+                <input type="text" id="opinionName" placeholder="Seu nome ou apelido" value="Torcedor(a) Atleticano">
+                <textarea id="opinionMessage" rows="3" placeholder="Escreva sua opinião... ex: 'Maior de Minas', 'Libertadores foi inesquecível', 'Arena MRV é top'..."></textarea>
+                <button id="submitOpinionBtn"><i class="fas fa-paper-plane"></i> Enviar opinião</button>
+            </div>
+            <div class="opinions-list" id="opinionsList">
+                <h3><i class="fas fa-comment-dots"></i> Opiniões da Nação Atleticana:</h3>
+                <div id="opinionsContainer">
+                    <!-- opiniões padrão -->
+                    <div class="single-opinion"><div class="opinion-author">João Vitor <span class="opinion-date">(há 2 dias)</span></div><div class="opinion-text">"Galo é o time mais raçudo do Brasil! 2021 eterno, e Hulk é patrimônio!"</div></div>
+                    <div class="single-opinion"><div class="opinion-author">Maria Fernanda <span class="opinion-date">(há 5 dias)</span></div><div class="opinion-text">"Sou apaixonada pela Arena MRV, e o Galo merece mais Libertadores. Vamos pra cima!"</div></div>
+                    <div class="single-opinion"><div class="opinion-author">GaloDoido_81 <span class="opinion-date">(há 3 dias)</span></div><div class="opinion-text">"Ronaldinho Gaúcho foi mágico, mas o time atual é guerreiro. Respeito eterno ao Galo!"</div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <p><i class="fas fa-crow"></i> Clube Atlético Mineiro - Galo Forte &copy; 2025 | Site criado com ♥ para a imensa Nação Atleticana.</p>
+    <p style="margin-top: 0.5rem;">#GaloDoido #Libertadores #ArenaMRV</p>
+</footer>
+
+<script>
+    // Navegação entre seções (Home, About, Titles, Players, Opinion)
+    const sections = ['home', 'about', 'titles', 'players', 'opinion'];
+    const navLinks = document.querySelectorAll('.nav-link');
+    function activateSection(sectionId) {
+        sections.forEach(sec => {
+            const sectionElement = document.getElementById(sec);
+            if(sectionElement) {
+                if(sec === sectionId) {
+                    sectionElement.classList.add('active-section');
+                } else {
+                    sectionElement.classList.remove('active-section');
+                }
+            }
+        });
+        // Atualizar estilo dos links ativos
+        navLinks.forEach(link => {
+            const linkSection = link.getAttribute('data-section');
+            if(linkSection === sectionId) {
+                link.classList.add('active-nav');
+            } else {
+                link.classList.remove('active-nav');
+            }
+        });
+    }
+
+    navLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const sectionId = link.getAttribute('data-section');
+            if(sectionId) {
+                activateSection(sectionId);
+                // pequeno scroll suave para topo
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        });
+    });
+
+    // Inicialização: garantir que home esteja ativa (já por padrão)
+    // Caso url tenha hash? não, mas forçar home ativa se nenhuma
+    const currentActive = document.querySelector('.nav-link.active-nav');
+    if(!currentActive) {
+        activateSection('home');
+    } else {
+        const activeSection = currentActive.getAttribute('data-section');
+        if(activeSection) activateSection(activeSection);
+    }
+
+    // OPINIÃO: adicionar nova opinião dinamicamente e salvar no localStorage
+    const submitBtn = document.getElementById('submitOpinionBtn');
+    const opinionNameInput = document.getElementById('opinionName');
+    const opinionMsgInput = document.getElementById('opinionMessage');
+    const opinionsContainer = document.getElementById('opinionsContainer');
+
+    // Carregar opiniões salvas no localStorage
+    let savedOpinions = [];
+
+    function loadOpinionsFromStorage() {
+        const stored = localStorage.getItem('atletico_opinions');
+        if(stored) {
+            savedOpinions = JSON.parse(stored);
+        } else {
+            // dados padrão para começar com alguns exemplos
+            savedOpinions = [
+                { author: "João Vitor", text: "Galo é o time mais raçudo do Brasil! 2021 eterno, e Hulk é patrimônio!", date: new Date(Date.now() - 2*86400000).toISOString() },
+                { author: "Maria Fernanda", text: "Sou apaixonada pela Arena MRV, e o Galo merece mais Libertadores. Vamos pra cima!", date: new Date(Date.now() - 5*86400000).toISOString() },
+                { author: "GaloDoido_81", text: "Ronaldinho Gaúcho foi mágico, mas o time atual é guerreiro. Respeito eterno ao Galo!", date: new Date(Date.now() - 3*86400000).toISOString() }
+            ];
+            localStorage.setItem('atletico_opinions', JSON.stringify(savedOpinions));
+        }
+        renderOpinions();
+    }
+
+    function renderOpinions() {
+        if(!opinionsContainer) return;
+        if(savedOpinions.length === 0) {
+            opinionsContainer.innerHTML = '<div class="single-opinion"><em>Ainda sem opiniões. Seja o primeiro a comentar sobre o Galo!</em></div>';
+            return;
+        }
+        let html = '';
+        // mostrar as opiniões mais recentes primeiro
+        [...savedOpinions].reverse().forEach(op => {
+            let dateObj = new Date(op.date);
+            let dateStr = dateObj.toLocaleDateString('pt-BR') + ' ' + dateObj.toLocaleTimeString('pt-BR', {hour:'2-digit', minute:'2-digit'});
+            html += `
+                <div class="single-opinion">
+                    <div class="opinion-author">${escapeHtml(op.author)} <span class="opinion-date">(${dateStr})</span></div>
+                    <div class="opinion-text">${escapeHtml(op.text)}</div>
+                </div>
+            `;
+        });
+        opinionsContainer.innerHTML = html;
+    }
+
+    function escapeHtml(str) {
+        if(!str) return '';
+        return str.replace(/[&<>]/g, function(m) {
+            if(m === '&') return '&amp;';
+            if(m === '<') return '&lt;';
+            if(m === '>') return '&gt;';
+            return m;
+        }).replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g, function(c) {
+            return c;
+        });
+    }
+
+    function addOpinion(author, text) {
+        if(!text.trim()) {
+            alert("Escreva uma opinião antes de enviar!");
+            return false;
+        }
+        let authorName = author.trim();
+        if(authorName === "") authorName = "Torcedor(a) anônimo";
+        const newOpinion = {
+            author: authorName,
+            text: text.trim(),
+            date: new Date().toISOString()
+        };
+        savedOpinions.push(newOpinion);
+        localStorage.setItem('atletico_opinions', JSON.stringify(savedOpinions));
+        renderOpinions();
+        return true;
+    }
+
+    if(submitBtn) {
+        submitBtn.addEventListener('click', () => {
+            const name = opinionNameInput.value.trim() !== "" ? opinionNameInput.value : "Torcedor(a) Atleticano";
+            const msg = opinionMsgInput.value;
+            if(!msg.trim()) {
+                alert("Por favor, escreva uma opinião sobre o Atlético Mineiro!");
+                return;
+            }
+            addOpinion(name, msg);
+            opinionMsgInput.value = '';  // limpar campo
+            // manutenção do nome opcional
+            if(opinionNameInput.value.trim() === "") opinionNameInput.value = "Torcedor(a) Atleticano";
+            alert("Opinião enviada com sucesso! #GaloDoido");
+        });
+    }
+
+    loadOpinionsFromStorage();
+</script>
+</body>
+</html>
